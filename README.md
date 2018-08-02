@@ -1,5 +1,4 @@
 Toy Robot Simulator
-===================
 
 ToyRobot is a command line tool that places and move the toy robot on a square tabletop of dimensions 5 units x 5 units.
 
