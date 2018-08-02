@@ -1,0 +1,46 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "CLI utility to place and move the toy robot",
+  "main": "Shell.js",
+  "repository": "git@git.realestate.com.au:recruiting/toy-robot.git",
+  "author": "Anonymous",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.16.0",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.5",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "jest": "^23.2.0"
+  },
+  "scripts": {
+    "build": "babel ./src -d ./dist",
+    "lint": "eslint .",
+    "start": "node dist/Shell.js",
+    "test": "jest",
+    "deploy": "sudo ln -sf $(pwd)/dist/Shell.js /usr/local/bin/ToyRobot"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+        "js"
+    ],
+    "testMatch": [
+        "**/__tests__/**/*.js"
+    ]
+  },
+  "bin": {
+    "ToyRobot": "./dist/Shell.js"
+  }
+}

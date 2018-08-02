@@ -1,0 +1,9 @@
+{
+    "extends": ["airbnb-base", "prettier"],
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0,
+      "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+      "linebreak-style": ["error", "windows"]
+    }
+}
