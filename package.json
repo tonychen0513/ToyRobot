@@ -11,15 +11,16 @@
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/jest": "^23.3.1",
     "@types/node": "^10.5.5",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.5",
-    "babel-preset-env": "^1.7.0",
+    "@types/readline-sync": "^1.4.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.13.0",
     "jest": "^23.2.0",
+    "ts-jest": "^23.1.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
@@ -30,19 +31,23 @@
     "test": "jest",
     "deploy": "sudo ln -sf $(pwd)/dist/Shell.js /usr/local/bin/ToyRobot"
   },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "jest": {
     "moduleFileExtensions": [
       "ts",
       "js"
     ],
     "testMatch": [
-      "**/__tests__/**/*.js"
-    ]
+      "**/__tests__/**/*.ts"
+    ],
+    "testURL": "http://localhost/",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    }
   },
   "bin": {
     "ToyRobot": "./dist/Shell.js"
