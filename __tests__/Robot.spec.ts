@@ -1,9 +1,9 @@
-import { ToyRobot, DirectionTypes, StringToDirection, DirectionToString } from '../src/Robot'
+import {ToyRobot, DirectionTypes, StringToDirection, DirectionToString } from '../src/Robot'
 
 describe('Toy Robot unit tests', () => {
 
   test('place the toy robot', (done) => {
-    var mockToyRobot = new ToyRobot(5, 5);
+    var mockToyRobot = new ToyRobot();
     mockToyRobot.place(0, 0, DirectionTypes.NORTH);
     expect(mockToyRobot.report()).toEqual('0,0,NORTH');
 
@@ -33,7 +33,7 @@ describe('Toy Robot unit tests', () => {
   });
 
   test('move a step', (done) => {
-    var mockToyRobot = new ToyRobot(5, 5);
+    var mockToyRobot = new ToyRobot();
     done();
   });
 

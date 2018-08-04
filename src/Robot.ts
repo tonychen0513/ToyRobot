@@ -1,5 +1,6 @@
 import { timingSafeEqual } from "crypto";
 import * as fs from 'fs';
+import RobotBoard from './RobotBoard';
 
 export enum DirectionTypes {
   NORTH,
@@ -37,8 +38,6 @@ export class ToyRobot
 {
   private xPos: number;
   private yPos: number;
-  private maxXPos: number;
-  private maxYPos: number;
   private direction: DirectionTypes;
 
   private readonly LEFT_TURN = new Map<number, DirectionTypes>([
@@ -55,9 +54,7 @@ export class ToyRobot
     [DirectionTypes.NORTH, DirectionTypes.EAST]
   ]);
 
-  constructor(maxX: number, maxY: number ) {
-    this.maxXPos = maxX;
-    this.maxYPos = maxY;
+  constructor() {
     this.xPos = 0;
     this.yPos = 0;
     this.direction = DirectionTypes.EAST;
@@ -84,10 +81,10 @@ export class ToyRobot
 
   public place(xPos: number, yPos: number, direction: DirectionTypes) {
     let errorMsg = '';
-    if (xPos < 0 || xPos >= this.maxXPos) {
+    if (!RobotBoard.isXAllowed(xPos)) {
       throw new Error(`Out of bound x position spoecified. ${xPos}`);
     }
-    if (yPos < 0 || yPos >= this.maxYPos) {
+    if (!RobotBoard.isYAllowed(yPos)) {
       throw new Error(`Out of bound y position spoecified. ${yPos}`);
     }
   
@@ -98,20 +95,24 @@ export class ToyRobot
 
   public move() {
     if (this.direction === DirectionTypes.EAST) {
-      if (this.xPos < this.maxXPos - 1) {
-        this.xPos++;
+      let x = this.xPos + 1;
+      if (RobotBoard.isXAllowed(x)) {
+        this.xPos = x;
       }
     } else if (this.direction === DirectionTypes.WEST) {
-      if (this.xPos > 0) {
-        this.xPos--;
+      let x = this.xPos - 1;
+      if (RobotBoard.isXAllowed(x)) {
+        this.xPos = x;
       }
     } else if (this.direction === DirectionTypes.NORTH) {
-      if (this.yPos < this.maxYPos - 1) {
-        this.yPos++;
+      let y = this.yPos - 1;
+      if (RobotBoard.isYAllowed(y)) {
+        this.yPos = y;
       }
     } else if (this.direction === DirectionTypes.SOUTH) {
-      if (this.yPos > 0) {
-        this.yPos--;
+      let y = this.yPos + 1;
+      if (RobotBoard.isYAllowed(y)) {
+        this.yPos = y;
       }
     }
   }

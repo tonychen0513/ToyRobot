@@ -7,6 +7,7 @@
   "author": "Anonymous",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "commander": "^2.16.0",
     "readline-sync": "^1.4.9"
   },
@@ -34,14 +35,15 @@
   "jest": {
     "moduleFileExtensions": [
       "ts",
-      "js"
+      "tsx",
+      "js",
+      "jsx",
+      "json"
     ],
-    "testMatch": [
-      "**/__tests__/**/*.ts"
-    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testURL": "http://localhost/",
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "globals": {
       "ts-jest": {
